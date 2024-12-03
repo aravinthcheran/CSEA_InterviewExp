@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./index.scss";
 import { useSignUp } from "../../hooks/useSignUp";
 
@@ -23,31 +22,32 @@ const SignUp = () => {
 
 	return (
 		<div className="signup-holder">
-			<form action="" className="signup" onSubmit={handleSubmit}>
+			<form className="signup" onSubmit={handleSubmit}>
 				<h3>Sign Up</h3>
-				<label htmlFor="">Name:</label>
+				<label>Name:</label>
 				<input
 					type="text"
 					value={name}
 					onChange={(e) => setName(e.target.value)}
+					placeholder="Enter your name"
 				/>
-				<label htmlFor="">Email:</label>
+				<label>Email:</label>
 				<input
 					type="email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
+					placeholder="Enter your email"
 				/>
-				<label htmlFor="">Password:</label>
+				<label>Password:</label>
 				<input
 					type="password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
+					placeholder="Enter your password"
 				/>
-				<p>  </p>
 				<button disabled={loading} type="submit">
-					Sign Up
+					{loading ? "Signing Up..." : "Sign Up"}
 				</button>
-				<p>   </p>
 				{error && <p>{error}</p>}
 			</form>
 		</div>
