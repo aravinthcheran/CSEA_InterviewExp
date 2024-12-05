@@ -34,14 +34,13 @@ const Login = () => {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<p>  </p>
+				<p> </p>
 				<button disabled={loading} type="submit">
 					Log in
 				</button>
-				<p>  </p>
+				<p> </p>
 				{error && <p>{error}</p>}
 			</form>
-			<p className="signup" onClick={() => window.location.href = "/signup"}>Sign Up</p>
 		</div>
 	);
 };

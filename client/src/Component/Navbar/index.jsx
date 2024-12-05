@@ -15,7 +15,7 @@ const Navbar = () => {
 
 	const handleClick = () => {
 		logout();
-        window.location.reload();
+		window.location.reload();
 	};
 
 	return (
@@ -64,16 +64,31 @@ const Navbar = () => {
 							aria-hidden="true"
 						></i>{" "}
 					</Dropdown.Toggle>
-
 					<Dropdown.Menu>
-						{menuList.map((item, index) => (
-							<Dropdown.Item key={index}>
-								<Link to={item.link}>
-									<i className={item.iconClass} aria-hidden="true"></i>
-									{item.title}
+						{menuList
+							.filter((item) => {
+								// Check if the user exists to filter out Login and Sign Up
+								if (user) {
+									return item.title !== "Login" && item.title !== "Sign Up";
+								}
+								return true;
+							})
+							.map((item, index) => (
+								<Dropdown.Item key={index}>
+									<Link to={item.link}>
+										<i className={item.iconClass} aria-hidden="true"></i>
+										{item.title}
+									</Link>
+								</Dropdown.Item>
+							))}
+						{user && (
+							<Dropdown.Item>
+								<Link to="#" onClick={handleClick}>
+									<i className="fa fa-sign-out" aria-hidden="true"></i>
+									Log out
 								</Link>
 							</Dropdown.Item>
-						))}
+						)}
 					</Dropdown.Menu>
 				</Dropdown>
 			</div>
