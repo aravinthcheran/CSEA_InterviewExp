@@ -49,14 +49,14 @@ app.use(mongoSanitize());
 app.use(xss());
 // helmet
 app.use(
-	helmet({
-		contentSecurityPolicy: false,
-	})
+  helmet({
+    contentSecurityPolicy: false,
+  })
 );
 //rate-limit
 const limiter = rateLimit({
-	windowMs: 60 * 1000, // 1 minutes
-	max: 10000, // limit each IP to 1000 requests per windowMs
+  windowMs: 60 * 1000, // 1 minutes
+  max: 10000, // limit each IP to 1000 requests per windowMs
 });
 app.use(limiter);
 // hpp
@@ -66,14 +66,14 @@ app.use(hpp());
 app.use(fileUpload());
 
 const options = {
-	dotfiles: "ignore",
-	etag: false,
-	extensions: ["htm", "html"],
-	maxAge: "1d",
-	redirect: false,
-	setHeaders: function (res, path, stat) {
-		res.set("x-timestamp", Date.now());
-	},
+  dotfiles: "ignore",
+  etag: false,
+  extensions: ["htm", "html"],
+  maxAge: "1d",
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    res.set("x-timestamp", Date.now());
+  },
 };
 app.use(express.static(path.join(__dirname, "./public"), options));
 
@@ -83,7 +83,7 @@ app.use("/api/v1/", apiRouter);
 const root = require("path").join(__dirname, "public", "build");
 app.use(express.static(root));
 app.get("*", (req, res) => {
-	res.sendFile("index.html", { root });
+  res.sendFile("index.html", { root });
 });
 
 app.use(errorHandler);
@@ -93,9 +93,9 @@ app.listen(PORT, console.log(`Server running on port ${PORT}`.yellow.bold));
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {
-	console.log(`Error: ${err.message}`.red);
-	// Close server & exit process
-	// server.close(() => process.exit(1));
+  console.log(`Error: ${err.message}`.red);
+  // Close server & exit process
+  // server.close(() => process.exit(1));
 });
 
 module.exports = app;

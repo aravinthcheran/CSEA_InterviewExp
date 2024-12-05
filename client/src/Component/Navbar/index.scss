@@ -42,6 +42,8 @@
         margin-right: 10px;
         & > * {
             margin: 0 5px;
+            display: flex;
+            gap: 0.5rem;
             
         }
         .btn {
@@ -127,7 +129,7 @@
             background-color: #d0d0d6;
         }
     }
-    @media (max-width: 768px) {
+    @media (max-width: 830px) {
         .title{
             margin-left: 20px !important;
             &::after {
