@@ -32,11 +32,11 @@ export const mobileDropDownList = [
         iconClass : "fa fa-file-text-o",
         title : "Request Article"
     },
-    // {
-    //     link : "/story", 
-    //     iconClass : "fa fa-history",
-    //     title : "Our Story"
-    // },
+    {
+        link : "/login", 
+        iconClass : "fa fa-sign",
+        title : "Login"
+    },
     {
         link : "/developers", 
         iconClass : "fa fa-code",

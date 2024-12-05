@@ -101,7 +101,7 @@
 
 @media (max-width: 768px) {
   .login, .signup {
-      width: 80%;
+      width: 90%; /* Full width on smaller screens */
   }
 
   .login-holder {
